@@ -37,4 +37,4 @@ if user_input:
         st.error(f"Error: {response['error']}")
     else:
         st.write("Response from API:")
-        st.json(response.get("message", "No 'message' key found in response"))
+        st.json(response.get("result", "No 'message' key found in response"))
