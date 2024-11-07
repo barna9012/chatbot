@@ -27,14 +27,17 @@ st.title("API Query Tool")
 # User input form
 user_input = st.text_input("Enter your question:")
 
-# Check if user input is provided
-if user_input:
-    # Call API and get response
-    response = call_api(user_input)
-    
-    # Display response from API
-    if "error" in response:
-        st.error(f"Error: {response['error']}")
+# Add a "Send" button
+if st.button("Send"):
+    if user_input:
+        # Call API and get response
+        response = call_api(user_input)
+        
+        # Display response from API
+        if "error" in response:
+            st.error(f"Error: {response['error']}")
+        else:
+            st.write("Response from API:")
+            st.json(response.get("result", "No 'result' key found in response"))
     else:
-        st.write("Response from API:")
-        st.json(response.get("result", "No 'message' key found in response"))
+        st.warning("Please enter a question before sending.")
