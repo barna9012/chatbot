@@ -7,7 +7,7 @@ def call_api(user_input):
     headers = {
         "Content-Type": "application/json"
     }
-    payload = {"input": user_input}
+    payload = {"description": user_input}
     
     try:
         response = requests.post(api_url, json=payload, headers=headers)
@@ -32,4 +32,4 @@ if user_input:
         st.error(f"Error: {response['error']}")
     else:
         st.write("Response from API:")
-        st.json(response)
+        st.json(response['message'])
